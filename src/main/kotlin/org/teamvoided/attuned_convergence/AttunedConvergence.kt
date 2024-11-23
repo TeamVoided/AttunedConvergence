@@ -3,6 +3,9 @@ package org.teamvoided.attuned_convergence
 import net.minecraft.util.Identifier
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.teamvoided.attuned_convergence.init.ACBlocks
+import org.teamvoided.attuned_convergence.init.ACItems
+import org.teamvoided.dusk_autumn.DusksAndDungeons
 
 @Suppress("unused")
 object AttunedConvergence {
@@ -10,9 +13,17 @@ object AttunedConvergence {
 
     @JvmField
     val log: Logger = LoggerFactory.getLogger(AttunedConvergence::class.simpleName)
+    private var isInit = false
 
     fun init() {
-        log.info("Hello from Common")
+        if (isInit) return
+        isInit = true
+        log.info("Attuning Convergences...")
+        DusksAndDungeons.init()
+
+        ACItems.init()
+        ACBlocks.init()
+
     }
 
     fun id(path: String) = Identifier.of(MODID, path)
