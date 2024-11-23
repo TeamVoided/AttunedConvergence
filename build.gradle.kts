@@ -39,6 +39,8 @@ modSettings {
 
 dependencies {
     modImplementation(fileTree("libs"))
+    modImplementation(fileTree("compat"))
+
     modImplementation(libs.modmenu)
 
     modCompileOnly("${libs.emi.get()}:api")
