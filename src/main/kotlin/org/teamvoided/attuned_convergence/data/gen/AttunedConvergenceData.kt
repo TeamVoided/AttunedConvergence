@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.minecraft.registry.RegistrySetBuilder
 import org.teamvoided.attuned_convergence.AttunedConvergence.log
+import org.teamvoided.attuned_convergence.data.gen.model.ModelProvider
 
 @Suppress("unused")
 object AttunedConvergenceData : DataGeneratorEntrypoint {
@@ -11,7 +12,8 @@ object AttunedConvergenceData : DataGeneratorEntrypoint {
         log.info("Hello from DataGen")
         val pack = gen.createPack()
 
-//        pack.addProvider(::TemplateWorldGenerator)
+        pack.addProvider(::ModelProvider)
+        pack.addProvider(::EnLangProvider)
     }
 
     override fun buildRegistry(gen: RegistrySetBuilder) {
