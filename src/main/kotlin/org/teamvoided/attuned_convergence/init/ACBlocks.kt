@@ -1,8 +1,5 @@
 package org.teamvoided.attuned_convergence.init
 
-import architectspalette.core.registry.util.BlockNode
-import architectspalette.core.registry.util.BlockNode.DataFlag
-import architectspalette.core.registry.util.BlockNode.Tool
 import net.minecraft.block.Block
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
@@ -27,17 +24,6 @@ object ACBlocks {
         return regBlock
     }
 
-    internal fun createBoardNode(name: String, block: Block): BlockNode {
-        val regBlock = register(name, block)
-        var node = BlockNode.Builder()
-            .tool(Tool.AXE)
-            .base { regBlock }
-            .commonVariants()
-            .flag(DataFlag.BOARDS)
-            .build()
-//        APBlocks.boards.add(node)
-        return node
-    }
 
     internal fun registerNoItem(id: String, block: Block): Block {
         val regBlock = Registry.register(Registries.BLOCK, id(id), block)
