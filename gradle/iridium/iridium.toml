@@ -1,4 +1,4 @@
-projectTitle = "AttunedConvergence"
+projectTitle = "Attuned Convergence"
 modId = "attuned_convergence"
 githubRepo = "Teamvoided/TeamVoidedTemplateMod"
 discordServerInviteId = "KZ5Q364hEg"
@@ -10,7 +10,7 @@ fabricApiVersion = "0.109.0+1.21.1"
 fabricLangKotlinVersion = "1.12.3+kotlin.2.0.21"
 license = "MIT"
 modules = [ ]
-modDescription = "Template Mod Description"
+modDescription = "Mod compat mod"
 # Modmenu badges, values can be: [ library, deprecated ]
 badges = [ ]
 disableKotlin = false

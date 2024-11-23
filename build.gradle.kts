@@ -28,9 +28,9 @@ repositories {
 println("Task: " + gradle.startParameter.taskNames.joinToString(","))
 
 modSettings {
-    entrypoint("main", "org.teamvoided.template.Template::init")
-    entrypoint("client", "org.teamvoided.template.TemplateClient::init")
-    entrypoint("fabric-datagen", "org.teamvoided.template.data.gen.TemplateData")
+    entrypoint("main", "org.teamvoided.attuned_convergence.AttunedConvergence::init")
+    entrypoint("client", "org.teamvoided.attuned_convergence.AttunedConvergenceClient::init")
+    entrypoint("fabric-datagen", "org.teamvoided.attuned_convergence.data.gen.AttunedConvergenceData")
 
     mixinFile("${modId()}.client.mixins.json")
 //    mixinFile("${modId()}.mixins.json")
@@ -86,7 +86,7 @@ tasks {
     jar {
         val valTaskNames = gradle.startParameter.taskNames
         if (!valTaskNames.contains("runDataGen")) {
-            exclude("org/teamvoided/template/data/gen/*")
+            exclude("org/teamvoided/attuned_convergence/data/gen/*")
         } else {
             println("Running datagen for task ${valTaskNames.joinToString(" ")}")
         }
