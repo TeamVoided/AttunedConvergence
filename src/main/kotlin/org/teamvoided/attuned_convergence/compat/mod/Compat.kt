@@ -1,6 +1,9 @@
-package org.teamvoided.attuned_convergence.init.mod
+package org.teamvoided.attuned_convergence.compat.mod
 
-interface CompatExample {
+import org.teamvoided.attuned_convergence.compat.module.Module
+
+interface Compat {
+    fun populate(content: MutableList<Module>)
     /*
         // --- WOOD COMPAT ---
         - Leaf Piles

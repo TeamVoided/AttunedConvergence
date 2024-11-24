@@ -6,17 +6,9 @@ import net.minecraft.item.Item
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import org.teamvoided.attuned_convergence.AttunedConvergence.id
-import org.teamvoided.attuned_convergence.init.mod.ArchitectsPaletteCompat
-import org.teamvoided.attuned_convergence.init.mod.DusksAndDungeonsCompat
-import org.teamvoided.attuned_convergence.init.mod.MakeItGothCompat
 
 object ACBlocks {
-    fun init() {
-        DusksAndDungeonsCompat.init()
-        ArchitectsPaletteCompat.init()
-        MakeItGothCompat.init()
-
-    }
+    val BLOCKS = mutableListOf<Block>()
 
     internal fun register(id: String, block: Block): Block {
         val regBlock = registerNoItem(id, block)
@@ -27,6 +19,7 @@ object ACBlocks {
 
     internal fun registerNoItem(id: String, block: Block): Block {
         val regBlock = Registry.register(Registries.BLOCK, id(id), block)
+        BLOCKS.add(regBlock)
         return regBlock
     }
 }

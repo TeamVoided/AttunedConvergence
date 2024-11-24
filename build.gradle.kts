@@ -32,8 +32,8 @@ modSettings {
     entrypoint("client", "org.teamvoided.attuned_convergence.AttunedConvergenceClient::init")
     entrypoint("fabric-datagen", "org.teamvoided.attuned_convergence.data.gen.AttunedConvergenceData")
 
-    mixinFile("${modId()}.client.mixins.json")
-//    mixinFile("${modId()}.mixins.json")
+//    mixinFile("${modId()}.client.mixins.json")
+    mixinFile("${modId()}.mixins.json")
 //    accessWidener("${modId()}.accesswidener")
 }
 

@@ -7,8 +7,6 @@ import org.teamvoided.attuned_convergence.AttunedConvergence.id
 
 object ACItems {
     val ITEMS = mutableListOf<Item>()
-    fun init() = Unit
-
     fun register(id: String, item: Item): Item {
         val regItem = Registry.register(Registries.ITEM, id(id), item)
         ITEMS.add(regItem)
