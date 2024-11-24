@@ -1,5 +1,6 @@
 package org.teamvoided.attuned_convergence.data.gen.tag
 
+import architectspalette.core.registry.APTags
 import com.ninni.twigs.TwigsTags
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
@@ -33,5 +34,6 @@ internal class ItemTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderL
         copy(DnDBlockTags.LEAF_PILES, DnDItemTags.LEAF_PILES)
         copy(DnDBlockTags.LOG_PILES_THAT_BURN, DnDItemTags.LOG_PILES_THAT_BURN)
         copy(DnDBlockTags.LOG_PILES, DnDItemTags.LOG_PILES)
+        copy(APTags.NUBS, APTags.NUBS_ITEM)
     }
 }
