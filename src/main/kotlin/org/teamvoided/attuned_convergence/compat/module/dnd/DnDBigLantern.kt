@@ -28,7 +28,7 @@ import org.teamvoided.dusk_autumn.util.datagen.registerBigLantern
 
 class DnDBigLantern(
     val modId: String, name: String, lantern: Block,
-    val torch: Block, val ingot: Item, val nugget: Item
+    val torch: Item, val ingot: Item, val nugget: Item
 ) : Module {
     override fun modId(): String = modId
     val bigLantern = register("big_${name}_lantern", BigLanternBlock(copy(lantern).sounds(bigLanternSound)))
