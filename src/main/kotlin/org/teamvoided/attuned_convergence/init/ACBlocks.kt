@@ -17,7 +17,6 @@ object ACBlocks {
         return regBlock
     }
 
-
     internal fun registerNoItem(id: String, block: Block): Block {
         val regBlock = Registry.register(Registries.BLOCK, id(id), block)
         BLOCKS.add(regBlock)
