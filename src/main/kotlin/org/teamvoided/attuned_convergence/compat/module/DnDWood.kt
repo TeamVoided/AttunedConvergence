@@ -23,11 +23,11 @@ import org.teamvoided.attuned_convergence.util.wall
 import org.teamvoided.dusk_autumn.data.tags.DnDBlockTags
 import org.teamvoided.dusk_autumn.util.datagen.genPsudoFamily
 
-class DnDWood(val modId: String, name: String, var log: Block) : Module {
+class DnDWood(val modId: String, name: String,var wood:Block, var log: Block) : Module {
     override fun modId() = modId
-    val stairs = register("${name}_wood_stairs", StairsBlock(log.defaultState, copy(log).mapColor(log.defaultMapColor)))
-    val slab = register("${name}_wood_slab", SlabBlock(copy(log).mapColor(log.defaultMapColor)))
-    val wall = register("${name}_wood_wall", WallBlock(copy(log).mapColor(log.defaultMapColor)))
+    val stairs = register("${name}_wood_stairs", StairsBlock(wood.defaultState, copy(wood)))
+    val slab = register("${name}_wood_slab", SlabBlock(copy(wood)))
+    val wall = register("${name}_wood_wall", WallBlock(copy(wood)))
 
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
         tagBuilder(BlockTags.WOODEN_SLABS).add(slab)
@@ -45,9 +45,9 @@ class DnDWood(val modId: String, name: String, var log: Block) : Module {
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {
         var e = makeConditional(mods(DUSKS_AND_DUNGEONS, modId()))
-        stair(e, stairs, log)
-        slab(e, slab, log)
-        wall(e, wall, log)
+        stair(e, stairs, wood)
+        slab(e, slab, wood)
+        wall(e, wall, wood)
     }
 
     override fun lootTables(gen: FabricBlockLootTableProvider) =

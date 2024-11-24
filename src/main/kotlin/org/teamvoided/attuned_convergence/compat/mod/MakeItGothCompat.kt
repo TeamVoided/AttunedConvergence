@@ -11,6 +11,8 @@ object MakeItGothCompat : Compat {
     override fun populate(content: MutableList<Module>) {
         if (CompatVariables.ArchitectsPalette)
             content.add(ArchitectsPalettePlanks(MAKE_IT_GOTH, "rotwood", GothBlocks.ROTWOOD_PLANKS))
-        if (CompatVariables.DusksAndDungeons) content.add(DnDWood(MAKE_IT_GOTH, "rotwood", GothBlocks.ROTWOOD_LOG))
+        if (CompatVariables.DusksAndDungeons) content.add(
+            DnDWood(MAKE_IT_GOTH, "rotwood", GothBlocks.ROTWOOD_WOOD, GothBlocks.ROTWOOD_LOG)
+        )
     }
 }
