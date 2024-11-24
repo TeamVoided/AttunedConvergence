@@ -5,11 +5,11 @@ import architectspalette.core.registry.APItems
 import architectspalette.core.registry.util.StoneBlockSet.SetComponent.SLAB
 import org.teamvoided.attuned_convergence.compat.CompatVariables
 import org.teamvoided.attuned_convergence.compat.CompatVariables.ARCHITECTS_PALETTE
-import org.teamvoided.attuned_convergence.compat.module.DnD.DnDBigLantern
-import org.teamvoided.attuned_convergence.compat.module.DnD.DnDChain
-import org.teamvoided.attuned_convergence.compat.module.DnD.DnDLeaves
-import org.teamvoided.attuned_convergence.compat.module.DnD.DnDLogs
-import org.teamvoided.attuned_convergence.compat.module.DnD.DnDWood
+import org.teamvoided.attuned_convergence.compat.module.dnd.DnDBigLantern
+import org.teamvoided.attuned_convergence.compat.module.dnd.DnDChain
+import org.teamvoided.attuned_convergence.compat.module.dnd.DnDLeaves
+import org.teamvoided.attuned_convergence.compat.module.dnd.DnDLogs
+import org.teamvoided.attuned_convergence.compat.module.dnd.DnDWood
 import org.teamvoided.attuned_convergence.compat.module.Module
 import org.teamvoided.attuned_convergence.compat.module.TwigsTable
 

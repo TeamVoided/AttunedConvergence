@@ -1,4 +1,4 @@
-package org.teamvoided.attuned_convergence.compat.module.DnD
+package org.teamvoided.attuned_convergence.compat.module.dnd
 
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider

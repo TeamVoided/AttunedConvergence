@@ -1,8 +1,9 @@
-package org.teamvoided.attuned_convergence.compat.module.DnD
+package org.teamvoided.attuned_convergence.compat.module.dnd
 
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags
 import net.minecraft.block.AbstractBlock.Settings.copy
 import net.minecraft.block.Block
 import net.minecraft.data.client.model.BlockStateModelGenerator
@@ -20,46 +21,46 @@ import org.teamvoided.attuned_convergence.init.ACBlocks
 import org.teamvoided.attuned_convergence.init.ACBlocks.register
 import org.teamvoided.attuned_convergence.util.crit
 import org.teamvoided.attuned_convergence.util.mods
-import org.teamvoided.dusk_autumn.block.big.BigLanternBlock
-import org.teamvoided.dusk_autumn.util.bigLanternSound
-import org.teamvoided.dusk_autumn.util.datagen.registerBigLantern
+import org.teamvoided.attuned_convergence.util.opt
+import org.teamvoided.dusk_autumn.block.big.BigChainBlock
+import org.teamvoided.dusk_autumn.init.blocks.DnDBigBlocks
+import org.teamvoided.dusk_autumn.util.bigChainSound
+import org.teamvoided.dusk_autumn.util.datagen.registerBigChain
 
-class DnDBigLantern(
-    val modId: String, name: String, lantern: Block,
-    val torch: Block, val ingot: Item, val nugget: Item
-) : Module {
+class DnDChain(val modId: String, name: String, chain: Block, val ingot: Item, val nugget: Item) : Module {
     override fun modId(): String = modId
-    val bigLantern = register("big_${name}_lantern", BigLanternBlock(copy(lantern).sounds(bigLanternSound)))
+    val bigChain = register("big_${name}_chain", BigChainBlock(copy(chain).sounds(bigChainSound)))
     val condition = mods(DUSKS_AND_DUNGEONS, modId())
 
     init {
-        ACBlocks.CUTOUT_BLOCKS.add(bigLantern)
+        ACBlocks.CUTOUT_BLOCKS.add(bigChain)
     }
 
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
+        tagBuilder(ConventionalBlockTags.CHAINS).opt(DnDBigBlocks.BIG_CHAIN)
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {
         var e = makeConditional(condition)
-        ShapedRecipeJsonFactory.create(RecipeCategory.BUILDING_BLOCKS, bigLantern)
-            .ingredient('#', Ingredient.ofItems(torch))
-            .ingredient('O', Ingredient.ofItems(ingot))
-            .ingredient('X', Ingredient.ofItems(nugget))
-            .pattern("XOX")
-            .pattern("O#O")
-            .pattern("XOX")
-            .crit(torch)
+        ShapedRecipeJsonFactory.create(RecipeCategory.BUILDING_BLOCKS, bigChain, 1)
+            .pattern("I")
+            .pattern("N")
+            .pattern("I")
+            .ingredient('I', Ingredient.ofItems(ingot))
+            .ingredient('N', Ingredient.ofItems(nugget))
+            .crit(nugget)
+            .crit(ingot)
             .offerTo(e)
     }
 
     override fun lootTables(rawGen: FabricBlockLootTableProvider) {
         var gen = rawGen.withConditions(condition)
-        gen.addDrop(bigLantern)
+        gen.addDrop(bigChain)
     }
 
     override fun models(gen: BlockStateModelGenerator) {
-        gen.registerBigLantern(bigLantern)
+        gen.registerBigChain(bigChain)
     }
 
-    override fun getTabEntire(params: ItemGroup.DisplayParameters): List<ItemConvertible> = listOf(bigLantern)
+    override fun getTabEntire(params: ItemGroup.DisplayParameters): List<ItemConvertible> = listOf(bigChain)
 }
