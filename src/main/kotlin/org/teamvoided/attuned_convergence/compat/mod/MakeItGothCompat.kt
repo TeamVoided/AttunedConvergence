@@ -3,8 +3,8 @@ package org.teamvoided.attuned_convergence.compat.mod
 import org.teamvoided.attuned_convergence.compat.CompatVariables
 import org.teamvoided.attuned_convergence.compat.CompatVariables.MAKE_IT_GOTH
 import org.teamvoided.attuned_convergence.compat.module.ArchitectsPalettePlanks
-import org.teamvoided.attuned_convergence.compat.module.DnDLogs
-import org.teamvoided.attuned_convergence.compat.module.DnDWood
+import org.teamvoided.attuned_convergence.compat.module.DnD.DnDLogs
+import org.teamvoided.attuned_convergence.compat.module.DnD.DnDWood
 import org.teamvoided.attuned_convergence.compat.module.Module
 import org.teamvoided.attuned_convergence.compat.module.TwigsTable
 import net.leah.makeitgoth.block.ModBlocks as GothBlocks

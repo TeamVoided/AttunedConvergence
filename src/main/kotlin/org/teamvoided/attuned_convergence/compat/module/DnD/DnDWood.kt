@@ -1,4 +1,4 @@
-package org.teamvoided.attuned_convergence.compat.module
+package org.teamvoided.attuned_convergence.compat.module.DnD
 
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
@@ -15,6 +15,7 @@ import net.minecraft.item.ItemGroup
 import net.minecraft.registry.tag.BlockTags
 import net.minecraft.registry.tag.TagKey
 import org.teamvoided.attuned_convergence.compat.CompatVariables.DUSKS_AND_DUNGEONS
+import org.teamvoided.attuned_convergence.compat.module.Module
 import org.teamvoided.attuned_convergence.init.ACBlocks.register
 import org.teamvoided.attuned_convergence.util.mods
 import org.teamvoided.attuned_convergence.util.opt

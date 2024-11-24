@@ -1,46 +1,58 @@
-package org.teamvoided.attuned_convergence.compat.module
+package org.teamvoided.attuned_convergence.compat.module.DnD
 
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition
+import net.minecraft.block.AbstractBlock.Settings.copy
 import net.minecraft.block.Block
 import net.minecraft.data.client.model.BlockStateModelGenerator
 import net.minecraft.data.server.recipe.RecipeExporter
 import net.minecraft.item.ItemConvertible
 import net.minecraft.item.ItemGroup
+import net.minecraft.particle.DefaultParticleType
 import net.minecraft.registry.tag.TagKey
 import org.teamvoided.attuned_convergence.compat.CompatVariables.DUSKS_AND_DUNGEONS
+import org.teamvoided.attuned_convergence.compat.module.Module
+import org.teamvoided.attuned_convergence.init.ACBlocks
 import org.teamvoided.attuned_convergence.init.ACBlocks.register
 import org.teamvoided.attuned_convergence.util.mods
 import org.teamvoided.attuned_convergence.util.opt
+import org.teamvoided.dusk_autumn.block.FallingLeafPileBlock
+import org.teamvoided.dusk_autumn.block.LeafPileBlock
 import org.teamvoided.dusk_autumn.data.tags.DnDBlockTags
-import org.teamvoided.dusk_autumn.util.datagen.createLogPile
+import org.teamvoided.dusk_autumn.util.datagen.createLeafPile
 import org.teamvoided.dusk_autumn.util.datagen.createPiles
-import org.teamvoided.dusk_autumn.util.datagen.logPile
-import org.teamvoided.dusk_autumn.util.logPile as createLogPile
+import org.teamvoided.dusk_autumn.util.datagen.leafPile
 
-class DnDLogs(val modId: String, name: String, var log: Block) : Module {
+class DnDLeaves(val modId: String, name: String, val leaves: Block, particle: DefaultParticleType? = null) : Module {
     var condition = mods(DUSKS_AND_DUNGEONS, modId())
-    val logPile = register("${name}_log_pile", createLogPile(log, log.defaultMapColor))
-    override fun modId() = modId
+    val leafPile = register(
+        "${name}_leaf_pile",
+        if (particle != null) FallingLeafPileBlock(particle, copy(leaves)) else LeafPileBlock(copy(leaves))
+    )
+    init{
+        ACBlocks.CUTOUT_BLOCKS.add(leafPile)
+    }
 
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
-        tagBuilder(DnDBlockTags.LOG_PILES_THAT_BURN).opt(logPile)
+        tagBuilder(DnDBlockTags.LEAF_PILES).opt(leafPile)
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {
         var e = makeConditional(condition)
-        e.createPiles(logPile, log)
+        e.createPiles(leafPile, leaves)
     }
 
     override fun lootTables(rawGen: FabricBlockLootTableProvider) {
         var gen = rawGen.withConditions(condition)
-        gen.logPile(logPile)
+        gen.add(leafPile, gen.leafPile(leafPile, leaves))
     }
 
     override fun models(gen: BlockStateModelGenerator) {
-        gen.createLogPile(logPile, log)
+        gen.createLeafPile(leafPile, leaves)
     }
 
-    override fun getTabEntire(params: ItemGroup.DisplayParameters): List<ItemConvertible> = listOf(logPile)
+    override fun getTabEntire(params: ItemGroup.DisplayParameters): List<ItemConvertible> = listOf(leafPile)
+
+    override fun modId(): String = modId
 }
