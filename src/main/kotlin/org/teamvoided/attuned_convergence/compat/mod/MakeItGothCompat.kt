@@ -10,7 +10,7 @@ import org.teamvoided.attuned_convergence.compat.module.TwigsTable
 import net.leah.makeitgoth.block.ModBlocks as GothBlocks
 
 object MakeItGothCompat : Compat {
-    override fun populate(content: MutableList<Module>) {
+    override fun populate(content: MutableSet<Module>) {
         if (CompatVariables.ArchitectsPalette)
             content.add(ArchitectsPalettePlanks(MAKE_IT_GOTH, "rotwood", GothBlocks.ROTWOOD_PLANKS))
         if (CompatVariables.DusksAndDungeons) {

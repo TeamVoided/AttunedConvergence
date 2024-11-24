@@ -11,7 +11,7 @@ import org.teamvoided.attuned_convergence.compat.module.Module
 import org.teamvoided.attuned_convergence.compat.module.TwigsTable
 
 object ArchitectsPaletteCompat : Compat {
-    override fun populate(content: MutableList<Module>) {
+    override fun populate(content: MutableSet<Module>) {
         if (CompatVariables.DusksAndDungeons) {
             content.add(DnDWood(ARCHITECTS_PALETTE, "twisted", APBlocks.TWISTED_WOOD.get(), APBlocks.TWISTED_LOG.get()))
             content.add(DnDLeaves(ARCHITECTS_PALETTE, "twisted", APBlocks.TWISTED_LEAVES.get()))

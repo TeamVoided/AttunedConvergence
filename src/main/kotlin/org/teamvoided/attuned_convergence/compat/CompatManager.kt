@@ -7,7 +7,7 @@ import org.teamvoided.attuned_convergence.compat.mod.TwigsCompat
 import org.teamvoided.attuned_convergence.compat.module.Module
 
 object CompatManager {
-    val COMPAT_LIST = mutableListOf<Module>()
+    val COMPAT_LIST = mutableSetOf<Module>()
 
     fun init() {
         if (CompatVariables.DusksAndDungeons) DusksAndDungeonsCompat.populate(COMPAT_LIST)
