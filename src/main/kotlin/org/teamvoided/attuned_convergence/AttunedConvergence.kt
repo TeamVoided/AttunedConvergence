@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory
 import org.teamvoided.attuned_convergence.compat.CompatManager
 import org.teamvoided.attuned_convergence.compat.CompatVariables
 import org.teamvoided.attuned_convergence.init.ACTabs
-import org.teamvoided.dusk_autumn.DusksAndDungeons
 
 @Suppress("unused")
 object AttunedConvergence {
@@ -20,7 +19,6 @@ object AttunedConvergence {
         if (isInit) return
         isInit = true
         log.info("Attuning Convergences...")
-        DusksAndDungeons.init()
         CompatVariables.init()
         CompatManager.init()
         ACTabs.init()
