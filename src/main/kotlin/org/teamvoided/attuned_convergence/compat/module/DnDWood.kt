@@ -50,8 +50,8 @@ class DnDWood(val modId: String, name: String, var log: Block) : Module {
         wall(e, wall, log)
     }
 
-    override fun lootTables(provider: FabricBlockLootTableProvider) =
-        listOf(stairs, slab, wall).forEach(provider::addDrop)
+    override fun lootTables(gen: FabricBlockLootTableProvider) =
+        listOf(stairs, slab, wall).forEach(gen::addDrop)
 
     override fun models(gen: BlockStateModelGenerator) {
         gen.genPsudoFamily(stairs, slab, wall, log)

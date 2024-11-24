@@ -42,7 +42,7 @@ class TwigsTable(val modId: String, name: String, var planks: Block, var slab: B
         quickTableRecipe(e, table, slab, fence, planks)
     }
 
-    override fun lootTables(provider: FabricBlockLootTableProvider) = provider.addDrop(table)
+    override fun lootTables(gen: FabricBlockLootTableProvider) = gen.addDrop(table)
     override fun models(gen: BlockStateModelGenerator) {
         var tex = Texture.particle(planks)
             .put(TextureKey.TOP, table.model("_top"))
