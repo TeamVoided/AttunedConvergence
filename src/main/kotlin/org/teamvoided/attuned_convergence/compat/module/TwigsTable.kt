@@ -32,6 +32,7 @@ import org.teamvoided.attuned_convergence.util.opt
 
 class TwigsTable(val modId: String, name: String, var planks: Block, var slab: Block, var fence: Block) : Module {
     override fun modId() = modId
+    val condition = mods(TWIGS, modId())
     val table = register("${name}_table", TableBlock(copy(planks)))
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
         tagBuilder(BlockTags.AXE_MINEABLE).opt(table)
@@ -39,11 +40,14 @@ class TwigsTable(val modId: String, name: String, var planks: Block, var slab: B
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {
-        var e = makeConditional(mods(TWIGS, modId()))
+        var e = makeConditional(condition)
         quickTableRecipe(e, table, slab, fence, planks)
     }
 
-    override fun lootTables(gen: FabricBlockLootTableProvider) = gen.addDrop(table)
+    override fun lootTables(rawGen: FabricBlockLootTableProvider) {
+        val gen = rawGen.withConditions(condition)
+        gen.addDrop(table)
+    }
     override fun models(gen: BlockStateModelGenerator) {
         var tex = Texture.particle(planks)
             .put(TextureKey.TOP, table.model("_top"))

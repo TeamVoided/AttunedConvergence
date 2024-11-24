@@ -24,8 +24,9 @@ import org.teamvoided.attuned_convergence.util.wall
 import org.teamvoided.dusk_autumn.data.tags.DnDBlockTags
 import org.teamvoided.dusk_autumn.util.datagen.genPsudoFamily
 
-class DnDWood(val modId: String, name: String,var wood:Block, var log: Block) : Module {
+class DnDWood(val modId: String, name: String, var wood: Block, var log: Block) : Module {
     override fun modId() = modId
+    var condition = mods(DUSKS_AND_DUNGEONS, modId())
     val stairs = register("${name}_wood_stairs", StairsBlock(wood.defaultState, copy(wood)))
     val slab = register("${name}_wood_slab", SlabBlock(copy(wood)))
     val wall = register("${name}_wood_wall", WallBlock(copy(wood)))
@@ -45,14 +46,16 @@ class DnDWood(val modId: String, name: String,var wood:Block, var log: Block) : 
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {
-        var e = makeConditional(mods(DUSKS_AND_DUNGEONS, modId()))
+        var e = makeConditional(condition)
         stair(e, stairs, wood)
         slab(e, slab, wood)
         wall(e, wall, wood)
     }
 
-    override fun lootTables(gen: FabricBlockLootTableProvider) =
+    override fun lootTables(rawGen: FabricBlockLootTableProvider) {
+        val gen = rawGen.withConditions(condition)
         listOf(stairs, slab, wall).forEach(gen::addDrop)
+    }
 
     override fun models(gen: BlockStateModelGenerator) {
         gen.genPsudoFamily(stairs, slab, wall, log)

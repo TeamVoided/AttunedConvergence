@@ -13,7 +13,7 @@ import net.minecraft.registry.tag.TagKey
 interface Module {
     fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder)
     fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter)
-    fun lootTables(gen: FabricBlockLootTableProvider)
+    fun lootTables(rawGen: FabricBlockLootTableProvider)
     fun models(gen: BlockStateModelGenerator)
     fun getTabEntire(params: ItemGroup.DisplayParameters): List<ItemConvertible>
     fun modId(): String

@@ -20,6 +20,7 @@ import org.teamvoided.dusk_autumn.util.datagen.logPile
 import org.teamvoided.dusk_autumn.util.logPile as createLogPile
 
 class DnDLogs(val modId: String, name: String, var log: Block) : Module {
+    var condition = mods(DUSKS_AND_DUNGEONS, modId())
     val logPile = register("${name}_log_pile", createLogPile(log, log.defaultMapColor))
     override fun modId() = modId
 
@@ -28,11 +29,12 @@ class DnDLogs(val modId: String, name: String, var log: Block) : Module {
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {
-        var e = makeConditional(mods(DUSKS_AND_DUNGEONS, modId()))
+        var e = makeConditional(condition)
         e.createPiles(logPile, log)
     }
 
-    override fun lootTables(gen: FabricBlockLootTableProvider) {
+    override fun lootTables(rawGen: FabricBlockLootTableProvider) {
+        var gen = rawGen.withConditions(condition)
         gen.logPile(logPile)
     }
 

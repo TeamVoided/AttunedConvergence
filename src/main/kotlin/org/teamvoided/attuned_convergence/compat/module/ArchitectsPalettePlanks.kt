@@ -1,7 +1,6 @@
 package org.teamvoided.attuned_convergence.compat.module
 
 import architectspalette.content.blocks.RailingBlock
-import architectspalette.core.registry.APBlocks
 import architectspalette.core.util.RecipeHelper.boardRecipe
 import architectspalette.core.util.RecipeHelper.railingRecipe
 import architectspalette.core.util.model.BoardModelGenerator.board
@@ -14,7 +13,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition
 import net.minecraft.block.AbstractBlock.Settings.copy
 import net.minecraft.block.Block
-import net.minecraft.block.Blocks
 import net.minecraft.block.SlabBlock
 import net.minecraft.block.StairsBlock
 import net.minecraft.block.WallBlock
@@ -35,6 +33,8 @@ class ArchitectsPalettePlanks(val modId: String, name: String, val planks: Block
     val boardStairs = register("${name}_board_stairs", StairsBlock(planks.defaultState, copy(planks)))
     val boardSlab = register("${name}_board_slab", SlabBlock(copy(planks)))
     val boardWall = register("${name}_board_wall", WallBlock(copy(planks)))
+
+    val condition = mods(ARCHITECTS_PALETTE, modId())
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
         tagBuilder(BlockTags.AXE_MINEABLE).opt(railing).opt(boards).opt(boardWall)
         tagBuilder(BlockTags.WOODEN_SLABS).opt(boardSlab)
@@ -43,7 +43,7 @@ class ArchitectsPalettePlanks(val modId: String, name: String, val planks: Block
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {
-        var e = makeConditional(mods(ARCHITECTS_PALETTE, modId()))
+        var e = makeConditional(condition)
         railingRecipe(e, railing, planks)
         boardRecipe(e, boards, planks)
         stair(e, boardStairs, boards)
@@ -51,8 +51,10 @@ class ArchitectsPalettePlanks(val modId: String, name: String, val planks: Block
         wall(e, boardWall, boards)
     }
 
-    override fun lootTables(gen: FabricBlockLootTableProvider) =
+    override fun lootTables(rawGen: FabricBlockLootTableProvider) {
+        val gen = rawGen.withConditions(condition)
         listOf(railing, boards, boardStairs, boardSlab, boardWall).forEach { gen.addDrop(it) }
+    }
 
     override fun models(gen: BlockStateModelGenerator) {
         railing(gen, railing, planks)

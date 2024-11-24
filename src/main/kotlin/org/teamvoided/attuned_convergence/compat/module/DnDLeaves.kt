@@ -23,6 +23,7 @@ import org.teamvoided.dusk_autumn.util.datagen.createPiles
 import org.teamvoided.dusk_autumn.util.datagen.leafPile
 
 class DnDLeaves(val modId: String, name: String, val leaves: Block, particle: DefaultParticleType? = null) : Module {
+    var condition = mods(DUSKS_AND_DUNGEONS, modId())
     val leafPile = register(
         "${name}_leaf_pile",
         if (particle != null) FallingLeafPileBlock(particle, copy(leaves)) else LeafPileBlock(copy(leaves))
@@ -33,11 +34,12 @@ class DnDLeaves(val modId: String, name: String, val leaves: Block, particle: De
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {
-        var e = makeConditional(mods(DUSKS_AND_DUNGEONS, modId()))
+        var e = makeConditional(condition)
         e.createPiles(leafPile, leaves)
     }
 
-    override fun lootTables(gen: FabricBlockLootTableProvider) {
+    override fun lootTables(rawGen: FabricBlockLootTableProvider) {
+        var gen = rawGen.withConditions(condition)
         gen.add(leafPile, gen.leafPile(leafPile, leaves))
     }
 
