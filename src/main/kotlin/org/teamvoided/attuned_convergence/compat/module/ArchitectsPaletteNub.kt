@@ -25,7 +25,7 @@ import org.teamvoided.attuned_convergence.util.*
 
 class ArchitectsPaletteNub(val modId: String, name: String, val block: Block) : Module {
     override fun modId() = modId
-    val nub = register("${name}_nub", NubBlock(copy(block)))
+    val nub = register("${name}_nub", NubBlock(copy(block).nonOpaque().solid()))
 
     val condition = mods(ARCHITECTS_PALETTE, modId())
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
