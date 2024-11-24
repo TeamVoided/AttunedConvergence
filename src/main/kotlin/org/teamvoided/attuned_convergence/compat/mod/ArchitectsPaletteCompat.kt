@@ -5,6 +5,7 @@ import architectspalette.core.registry.APItems
 import architectspalette.core.registry.util.StoneBlockSet.SetComponent.SLAB
 import org.teamvoided.attuned_convergence.compat.CompatVariables
 import org.teamvoided.attuned_convergence.compat.CompatVariables.ARCHITECTS_PALETTE
+import org.teamvoided.attuned_convergence.compat.module.DnD.DnDBigLantern
 import org.teamvoided.attuned_convergence.compat.module.DnD.DnDChain
 import org.teamvoided.attuned_convergence.compat.module.DnD.DnDLeaves
 import org.teamvoided.attuned_convergence.compat.module.DnD.DnDLogs
@@ -22,6 +23,13 @@ object ArchitectsPaletteCompat : Compat {
                 DnDChain(
                     ARCHITECTS_PALETTE, "nether_brass",
                     APBlocks.NETHER_BRASS_CHAIN.get(), APItems.NETHER_BRASS.get(), APItems.NETHER_BRASS_NUGGET.get()
+                )
+            )
+            content.add(
+                DnDBigLantern(
+                    ARCHITECTS_PALETTE, "nether_brass",
+                    APBlocks.NETHER_BRASS_LANTERN.get(), APBlocks.NETHER_BRASS_TORCH.get(),
+                    APItems.NETHER_BRASS.get(), APItems.NETHER_BRASS_NUGGET.get()
                 )
             )
         }
