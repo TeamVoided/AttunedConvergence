@@ -36,10 +36,10 @@ class ArchitectsPalettePlanks(val modId: String, name: String, val planks: Block
     val boardSlab = register("${name}_board_slab", SlabBlock(copy(planks)))
     val boardWall = register("${name}_board_wall", WallBlock(copy(planks)))
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
-        tagBuilder(BlockTags.AXE_MINEABLE).add(railing).add(boards).add(boardWall)
-        tagBuilder(BlockTags.WOODEN_SLABS).add(boardSlab)
-        tagBuilder(BlockTags.WOODEN_STAIRS).add(boardStairs)
-        tagBuilder(BlockTags.WALLS).add(boardWall)
+        tagBuilder(BlockTags.AXE_MINEABLE).opt(railing).opt(boards).opt(boardWall)
+        tagBuilder(BlockTags.WOODEN_SLABS).opt(boardSlab)
+        tagBuilder(BlockTags.WOODEN_STAIRS).opt(boardStairs)
+        tagBuilder(BlockTags.WALLS).opt(boardWall)
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {

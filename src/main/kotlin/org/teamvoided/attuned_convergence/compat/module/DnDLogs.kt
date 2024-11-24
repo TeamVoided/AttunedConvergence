@@ -12,6 +12,7 @@ import net.minecraft.registry.tag.TagKey
 import org.teamvoided.attuned_convergence.compat.CompatVariables.DUSKS_AND_DUNGEONS
 import org.teamvoided.attuned_convergence.init.ACBlocks.register
 import org.teamvoided.attuned_convergence.util.mods
+import org.teamvoided.attuned_convergence.util.opt
 import org.teamvoided.dusk_autumn.data.tags.DnDBlockTags
 import org.teamvoided.dusk_autumn.util.datagen.createLogPile
 import org.teamvoided.dusk_autumn.util.datagen.createPiles
@@ -23,7 +24,7 @@ class DnDLogs(val modId: String, name: String, var log: Block) : Module {
     override fun modId() = modId
 
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
-        tagBuilder(DnDBlockTags.LOG_PILES_THAT_BURN).add(logPile)
+        tagBuilder(DnDBlockTags.LOG_PILES_THAT_BURN).opt(logPile)
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {

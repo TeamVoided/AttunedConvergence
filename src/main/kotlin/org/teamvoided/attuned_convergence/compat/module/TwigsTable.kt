@@ -28,13 +28,14 @@ import org.teamvoided.attuned_convergence.util.model.model
 import org.teamvoided.attuned_convergence.util.model.modelNoLock
 import org.teamvoided.attuned_convergence.util.model.whenTrue
 import org.teamvoided.attuned_convergence.util.mods
+import org.teamvoided.attuned_convergence.util.opt
 
 class TwigsTable(val modId: String, name: String, var planks: Block, var slab: Block, var fence: Block) : Module {
     override fun modId() = modId
     val table = register("${name}_table", TableBlock(copy(planks)))
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
-        tagBuilder(BlockTags.AXE_MINEABLE).add(table)
-        tagBuilder(TwigsTags.TABLES_BLOCK).add(table)
+        tagBuilder(BlockTags.AXE_MINEABLE).opt(table)
+        tagBuilder(TwigsTags.TABLES_BLOCK).opt(table)
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {

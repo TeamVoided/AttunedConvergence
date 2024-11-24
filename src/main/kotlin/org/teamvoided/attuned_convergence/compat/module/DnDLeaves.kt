@@ -14,6 +14,7 @@ import net.minecraft.registry.tag.TagKey
 import org.teamvoided.attuned_convergence.compat.CompatVariables.DUSKS_AND_DUNGEONS
 import org.teamvoided.attuned_convergence.init.ACBlocks.register
 import org.teamvoided.attuned_convergence.util.mods
+import org.teamvoided.attuned_convergence.util.opt
 import org.teamvoided.dusk_autumn.block.FallingLeafPileBlock
 import org.teamvoided.dusk_autumn.block.LeafPileBlock
 import org.teamvoided.dusk_autumn.data.tags.DnDBlockTags
@@ -28,7 +29,7 @@ class DnDLeaves(val modId: String, name: String, val leaves: Block, particle: De
     )
 
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
-        tagBuilder(DnDBlockTags.LEAF_PILES).add(leafPile)
+        tagBuilder(DnDBlockTags.LEAF_PILES).opt(leafPile)
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {
