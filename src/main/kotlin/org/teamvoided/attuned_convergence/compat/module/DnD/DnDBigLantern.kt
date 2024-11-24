@@ -29,7 +29,7 @@ class DnDBigLantern(
     val torch: Block, val ingot: Item, val nugget: Item
 ) : Module {
     override fun modId(): String = modId
-    val bigLantern = register("${name}_big_chain", BigLanternBlock(copy(lantern).sounds(bigLanternSound)))
+    val bigLantern = register("big_${name}_lantern", BigLanternBlock(copy(lantern).sounds(bigLanternSound)))
     val condition = mods(DUSKS_AND_DUNGEONS, modId())
 
     init {

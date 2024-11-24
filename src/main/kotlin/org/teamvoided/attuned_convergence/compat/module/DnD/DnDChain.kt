@@ -29,7 +29,7 @@ import org.teamvoided.dusk_autumn.util.datagen.registerBigChain
 
 class DnDChain(val modId: String, name: String, chain: Block, val ingot: Item, val nugget: Item) : Module {
     override fun modId(): String = modId
-    val bigChain = register("${name}_big_chain", BigChainBlock(copy(chain).sounds(bigChainSound)))
+    val bigChain = register("big_${name}_chain", BigChainBlock(copy(chain).sounds(bigChainSound)))
     val condition = mods(DUSKS_AND_DUNGEONS, modId())
 
     init {
