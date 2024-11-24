@@ -6,6 +6,8 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
 import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.tag.BlockTags
 import net.minecraft.registry.tag.ItemTags
+import org.teamvoided.dusk_autumn.data.tags.DnDBlockTags
+import org.teamvoided.dusk_autumn.data.tags.DnDItemTags
 import java.util.concurrent.CompletableFuture
 
 internal class ItemTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderLookup.Provider>, blockTags: BlockTagProvider) :
@@ -23,5 +25,8 @@ internal class ItemTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderL
 
         // Modded
         copy(TwigsTags.TABLES_BLOCK, TwigsTags.TABLES_ITEM)
+        copy(DnDBlockTags.LEAF_PILES, DnDItemTags.LEAF_PILES)
+        copy(DnDBlockTags.LOG_PILES_THAT_BURN, DnDItemTags.LOG_PILES_THAT_BURN)
+        copy(DnDBlockTags.LOG_PILES, DnDItemTags.LOG_PILES)
     }
 }
