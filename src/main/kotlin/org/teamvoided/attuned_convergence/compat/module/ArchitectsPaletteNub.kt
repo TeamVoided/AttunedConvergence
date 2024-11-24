@@ -1,7 +1,6 @@
 package org.teamvoided.attuned_convergence.compat.module
 
 import architectspalette.content.blocks.NubBlock
-import architectspalette.content.blocks.RailingBlock
 import architectspalette.core.registry.APTags
 import architectspalette.core.util.RecipeHelper.cuttingName
 import architectspalette.core.util.model.ModelHelpers.nub
