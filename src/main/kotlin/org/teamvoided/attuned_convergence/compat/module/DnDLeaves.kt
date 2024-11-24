@@ -12,6 +12,7 @@ import net.minecraft.item.ItemGroup
 import net.minecraft.particle.DefaultParticleType
 import net.minecraft.registry.tag.TagKey
 import org.teamvoided.attuned_convergence.compat.CompatVariables.DUSKS_AND_DUNGEONS
+import org.teamvoided.attuned_convergence.init.ACBlocks
 import org.teamvoided.attuned_convergence.init.ACBlocks.register
 import org.teamvoided.attuned_convergence.util.mods
 import org.teamvoided.attuned_convergence.util.opt
@@ -28,6 +29,9 @@ class DnDLeaves(val modId: String, name: String, val leaves: Block, particle: De
         "${name}_leaf_pile",
         if (particle != null) FallingLeafPileBlock(particle, copy(leaves)) else LeafPileBlock(copy(leaves))
     )
+    init{
+        ACBlocks.CUTOUT_BLOCKS.add(leafPile)
+    }
 
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
         tagBuilder(DnDBlockTags.LEAF_PILES).opt(leafPile)
@@ -50,6 +54,4 @@ class DnDLeaves(val modId: String, name: String, val leaves: Block, particle: De
     override fun getTabEntire(params: ItemGroup.DisplayParameters): List<ItemConvertible> = listOf(leafPile)
 
     override fun modId(): String = modId
-
-    override fun getCutout(): List<Block> = listOf(leaves)
 }

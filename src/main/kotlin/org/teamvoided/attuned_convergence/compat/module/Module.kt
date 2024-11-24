@@ -17,5 +17,4 @@ interface Module {
     fun models(gen: BlockStateModelGenerator)
     fun getTabEntire(params: ItemGroup.DisplayParameters): List<ItemConvertible>
     fun modId(): String
-    fun getCutout(): List<Block> = listOf()
 }

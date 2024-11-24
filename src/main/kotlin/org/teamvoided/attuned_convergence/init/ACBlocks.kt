@@ -8,7 +8,8 @@ import net.minecraft.registry.Registry
 import org.teamvoided.attuned_convergence.AttunedConvergence.id
 
 object ACBlocks {
-    val BLOCKS = mutableListOf<Block>()
+    val BLOCKS = mutableSetOf<Block>()
+    val CUTOUT_BLOCKS = mutableSetOf<Block>()
 
     internal fun register(id: String, block: Block): Block {
         val regBlock = registerNoItem(id, block)
