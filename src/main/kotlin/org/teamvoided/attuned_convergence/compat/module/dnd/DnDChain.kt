@@ -14,6 +14,7 @@ import net.minecraft.item.ItemConvertible
 import net.minecraft.item.ItemGroup
 import net.minecraft.recipe.Ingredient
 import net.minecraft.recipe.RecipeCategory
+import net.minecraft.registry.tag.BlockTags
 import net.minecraft.registry.tag.TagKey
 import org.teamvoided.attuned_convergence.compat.CompatVariables.DUSKS_AND_DUNGEONS
 import org.teamvoided.attuned_convergence.compat.module.Module
@@ -23,7 +24,6 @@ import org.teamvoided.attuned_convergence.util.crit
 import org.teamvoided.attuned_convergence.util.mods
 import org.teamvoided.attuned_convergence.util.opt
 import org.teamvoided.dusk_autumn.block.big.BigChainBlock
-import org.teamvoided.dusk_autumn.init.blocks.DnDBigBlocks
 import org.teamvoided.dusk_autumn.util.bigChainSound
 import org.teamvoided.dusk_autumn.util.datagen.registerBigChain
 
@@ -37,7 +37,8 @@ class DnDChain(val modId: String, name: String, chain: Block, val ingot: Item, v
     }
 
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
-        tagBuilder(ConventionalBlockTags.CHAINS).opt(DnDBigBlocks.BIG_CHAIN)
+        tagBuilder(ConventionalBlockTags.CHAINS).opt(bigChain)
+        tagBuilder(BlockTags.PICKAXE_MINEABLE).opt(bigChain)
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {

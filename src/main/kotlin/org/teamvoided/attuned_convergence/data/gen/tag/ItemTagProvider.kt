@@ -3,6 +3,8 @@ package org.teamvoided.attuned_convergence.data.gen.tag
 import com.ninni.twigs.TwigsTags
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags
 import net.minecraft.registry.HolderLookup
 import net.minecraft.registry.tag.BlockTags
 import net.minecraft.registry.tag.ItemTags
@@ -22,6 +24,9 @@ internal class ItemTagProvider(o: FabricDataOutput, r: CompletableFuture<HolderL
         copy(BlockTags.WALLS, ItemTags.WALLS)
         copy(BlockTags.WOODEN_SLABS, ItemTags.WOODEN_SLABS)
         copy(BlockTags.WOODEN_STAIRS, ItemTags.WOODEN_STAIRS)
+
+        // Common
+        copy(ConventionalBlockTags.CHAINS, ConventionalItemTags.CHAINS)
 
         // Modded
         copy(TwigsTags.TABLES_BLOCK, TwigsTags.TABLES_ITEM)

@@ -13,13 +13,15 @@ import net.minecraft.item.ItemConvertible
 import net.minecraft.item.ItemGroup
 import net.minecraft.recipe.Ingredient
 import net.minecraft.recipe.RecipeCategory
+import net.minecraft.registry.tag.BlockTags
 import net.minecraft.registry.tag.TagKey
+import org.teamvoided.attuned_convergence.AttunedConvergence.id
 import org.teamvoided.attuned_convergence.compat.CompatVariables.DUSKS_AND_DUNGEONS
 import org.teamvoided.attuned_convergence.compat.module.Module
-import org.teamvoided.attuned_convergence.init.ACBlocks
 import org.teamvoided.attuned_convergence.init.ACBlocks.register
 import org.teamvoided.attuned_convergence.util.crit
 import org.teamvoided.attuned_convergence.util.mods
+import org.teamvoided.attuned_convergence.util.opt
 import org.teamvoided.dusk_autumn.block.big.BigLanternBlock
 import org.teamvoided.dusk_autumn.util.bigLanternSound
 import org.teamvoided.dusk_autumn.util.datagen.registerBigLantern
@@ -32,11 +34,8 @@ class DnDBigLantern(
     val bigLantern = register("big_${name}_lantern", BigLanternBlock(copy(lantern).sounds(bigLanternSound)))
     val condition = mods(DUSKS_AND_DUNGEONS, modId())
 
-    init {
-        ACBlocks.CUTOUT_BLOCKS.add(bigLantern)
-    }
-
     override fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder) {
+        tagBuilder(BlockTags.PICKAXE_MINEABLE).opt(bigLantern)
     }
 
     override fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter) {
@@ -58,7 +57,7 @@ class DnDBigLantern(
     }
 
     override fun models(gen: BlockStateModelGenerator) {
-        gen.registerBigLantern(bigLantern)
+        gen.registerBigLantern(bigLantern, false, id("block/big_nether_brass_lantern_bottom"))
     }
 
     override fun getTabEntire(params: ItemGroup.DisplayParameters): List<ItemConvertible> = listOf(bigLantern)
