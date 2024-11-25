@@ -23,7 +23,7 @@ object DusksAndDungeonsCompat : Compat {
         }
         if (CompatVariables.Twigs)
             c.add(TwigsTable(ID, "cascade", Wood.CASCADE_PLANKS, Wood.CASCADE_SLAB, Wood.CASCADE_FENCE))
-        if (CompatVariables.VoidedVariance){
+        if (CompatVariables.VoidedVariance) {
             c.add(VVCracked(ID, "cracked_mixed_nether_brick", Nether.CRACKED_MIXED_NETHER_BRICKS))
             c.add(VVCracked(ID, "cracked_red_nether_brick", Nether.CRACKED_RED_NETHER_BRICKS))
             c.add(VVCracked(ID, "cracked_mixed_blue_nether_brick", Nether.CRACKED_MIXED_BLUE_NETHER_BRICKS))
