@@ -26,7 +26,7 @@ import org.teamvoided.attuned_convergence.compat.CompatVariables.ARCHITECTS_PALE
 import org.teamvoided.attuned_convergence.init.ACBlocks.register
 import org.teamvoided.attuned_convergence.util.*
 
-class ArchitectsPalettePlanks(val modId: String, name: String, val planks: Block) : Module {
+class APPlanks(val modId: String, name: String, val planks: Block) : Module {
     override fun modId() = modId
     val railing = register("${name}_railing", RailingBlock(copy(planks)))
     val boards = register("${name}_boards", Block(copy(planks)))

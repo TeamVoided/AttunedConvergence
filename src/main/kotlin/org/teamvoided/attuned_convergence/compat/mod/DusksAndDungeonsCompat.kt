@@ -1,8 +1,8 @@
 package org.teamvoided.attuned_convergence.compat.mod
 
 import org.teamvoided.attuned_convergence.compat.CompatVariables
-import org.teamvoided.attuned_convergence.compat.module.ArchitectsPaletteNub
-import org.teamvoided.attuned_convergence.compat.module.ArchitectsPalettePlanks
+import org.teamvoided.attuned_convergence.compat.module.APNub
+import org.teamvoided.attuned_convergence.compat.module.APPlanks
 import org.teamvoided.attuned_convergence.compat.module.Module
 import org.teamvoided.attuned_convergence.compat.module.TwigsTable
 import org.teamvoided.attuned_convergence.compat.module.VVCracked
@@ -15,11 +15,11 @@ object DusksAndDungeonsCompat : Compat {
     override fun populate(c: MutableSet<Module>) {
         DusksAndDungeons.init()
         if (CompatVariables.ArchitectsPalette) {
-            c.add(ArchitectsPalettePlanks(ID, "cascade", Wood.CASCADE_PLANKS))
-            c.add(ArchitectsPaletteNub(ID, "polished_nether_brick", Nether.POLISHED_NETHER_BRICKS))
-            c.add(ArchitectsPaletteNub(ID, "polished_red_nether_brick", Nether.POLISHED_RED_NETHER_BRICKS))
-            c.add(ArchitectsPaletteNub(ID, "polished_blue_nether_brick", Nether.POLISHED_BLUE_NETHER_BRICKS))
-            c.add(ArchitectsPaletteNub(ID, "polished_gray_nether_brick", Nether.POLISHED_GRAY_NETHER_BRICKS))
+            c.add(APPlanks(ID, "cascade", Wood.CASCADE_PLANKS))
+            c.add(APNub(ID, "polished_nether_brick", Nether.POLISHED_NETHER_BRICKS))
+            c.add(APNub(ID, "polished_red_nether_brick", Nether.POLISHED_RED_NETHER_BRICKS))
+            c.add(APNub(ID, "polished_blue_nether_brick", Nether.POLISHED_BLUE_NETHER_BRICKS))
+            c.add(APNub(ID, "polished_gray_nether_brick", Nether.POLISHED_GRAY_NETHER_BRICKS))
         }
         if (CompatVariables.Twigs)
             c.add(TwigsTable(ID, "cascade", Wood.CASCADE_PLANKS, Wood.CASCADE_SLAB, Wood.CASCADE_FENCE))

@@ -2,8 +2,8 @@ package org.teamvoided.attuned_convergence.compat.mod
 
 import org.teamvoided.attuned_convergence.compat.CompatVariables
 import org.teamvoided.attuned_convergence.compat.CompatVariables.MAKE_IT_GOTH
-import org.teamvoided.attuned_convergence.compat.module.ArchitectsPaletteNub
-import org.teamvoided.attuned_convergence.compat.module.ArchitectsPalettePlanks
+import org.teamvoided.attuned_convergence.compat.module.APNub
+import org.teamvoided.attuned_convergence.compat.module.APPlanks
 import org.teamvoided.attuned_convergence.compat.module.dnd.DnDLogs
 import org.teamvoided.attuned_convergence.compat.module.dnd.DnDWood
 import org.teamvoided.attuned_convergence.compat.module.Module
@@ -13,8 +13,8 @@ import net.leah.makeitgoth.block.ModBlocks as GothBlocks
 object MakeItGothCompat : Compat {
     override fun populate(content: MutableSet<Module>) {
         if (CompatVariables.ArchitectsPalette){
-            content.add(ArchitectsPalettePlanks(MAKE_IT_GOTH, "rotwood", GothBlocks.ROTWOOD_PLANKS))
-            content.add(ArchitectsPaletteNub(MAKE_IT_GOTH, "gothstone", GothBlocks.GOTHSTONE))
+            content.add(APPlanks(MAKE_IT_GOTH, "rotwood", GothBlocks.ROTWOOD_PLANKS))
+            content.add(APNub(MAKE_IT_GOTH, "gothstone", GothBlocks.GOTHSTONE))
         }
         if (CompatVariables.DusksAndDungeons) {
             content.add(DnDWood(MAKE_IT_GOTH, "rotwood", GothBlocks.ROTWOOD_WOOD, GothBlocks.ROTWOOD_LOG))

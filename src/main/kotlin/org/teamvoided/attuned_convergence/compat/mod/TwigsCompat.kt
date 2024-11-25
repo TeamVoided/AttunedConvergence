@@ -1,7 +1,7 @@
 package org.teamvoided.attuned_convergence.compat.mod
 
 import org.teamvoided.attuned_convergence.compat.CompatVariables
-import org.teamvoided.attuned_convergence.compat.module.ArchitectsPaletteNub
+import org.teamvoided.attuned_convergence.compat.module.APNub
 import org.teamvoided.attuned_convergence.compat.module.Module
 import org.teamvoided.attuned_convergence.compat.module.VVCracked
 import com.ninni.twigs.registry.TwigsBlocks as TBlocks
@@ -10,8 +10,8 @@ import org.teamvoided.attuned_convergence.compat.CompatVariables.TWIGS as ID
 object TwigsCompat : Compat {
     override fun populate(c: MutableSet<Module>) {
         if (CompatVariables.ArchitectsPalette) {
-            c.add(ArchitectsPaletteNub(ID, "schist", TBlocks.SCHIST))
-            c.add(ArchitectsPaletteNub(ID, "rhyolite", TBlocks.RHYOLITE))
+            c.add(APNub(ID, "schist", TBlocks.SCHIST))
+            c.add(APNub(ID, "rhyolite", TBlocks.RHYOLITE))
         }
         if (CompatVariables.VoidedVariance) {
 //            c.add(VVCracked(ID, "cracked_brick", TBlocks.CRACKED_BRICKS))

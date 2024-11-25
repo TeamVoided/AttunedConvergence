@@ -22,7 +22,7 @@ import org.teamvoided.attuned_convergence.compat.CompatVariables.ARCHITECTS_PALE
 import org.teamvoided.attuned_convergence.init.ACBlocks.register
 import org.teamvoided.attuned_convergence.util.*
 
-class ArchitectsPaletteNub(val modId: String, name: String, val block: Block) : Module {
+class APNub(val modId: String, name: String, val block: Block) : Module {
     override fun modId() = modId
     val nub = register("${name}_nub", NubBlock(copy(block).nonOpaque().solid()))
 
