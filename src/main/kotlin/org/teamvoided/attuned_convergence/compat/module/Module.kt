@@ -11,10 +11,10 @@ import net.minecraft.item.ItemGroup
 import net.minecraft.registry.tag.TagKey
 
 interface Module {
+    fun modId(): String
     fun blockTags(tagBuilder: (TagKey<Block>) -> FabricTagProvider<Block>.FabricTagBuilder)
     fun recipes(makeConditional: (ResourceCondition) -> RecipeExporter)
     fun lootTables(rawGen: FabricBlockLootTableProvider)
     fun models(gen: BlockStateModelGenerator)
     fun getTabEntire(params: ItemGroup.DisplayParameters): List<ItemConvertible>
-    fun modId(): String
 }

@@ -25,6 +25,7 @@ interface Compat {
         - Big and Small Grave
         - Column
         - Bricks -> Heavy Bricks
+        - Infested
 
         // --- FIRE COMPAT ---
         (if missing)
@@ -37,6 +38,7 @@ interface Compat {
 
         // --- MICRO-BLOCK COMPAT ---
         - Nubs
+        - "Better" walls
 
     */
 }
