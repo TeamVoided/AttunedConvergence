@@ -46,7 +46,7 @@ object ArchitectsPaletteCompat : Compat {
         }
         if (CompatVariables.VoidedVariance) {
             c.add(VVCracked(ID, "cracked_olivestone_brick", CRACKED_OLIVESTONE_BRICKS.get()))
-            c.add(VVCracked(ID, "cracked_olivestonne_tiles", CRACKED_OLIVESTONE_TILES.get()))
+            c.add(VVCracked(ID, "cracked_olivestonne_tile", CRACKED_OLIVESTONE_TILES.get()))
             c.add(VVCracked(ID, "cracked_algal_brick", CRACKED_ALGAL_BRICKS.get()))
             c.add(VVCracked(ID, "cracked_end_stone_brick", CRACKED_END_STONE_BRICKS.get()))
             c.add(VVCracked(ID, "cracked_basalt_tile", CRACKED_BASALT_TILES.get()))

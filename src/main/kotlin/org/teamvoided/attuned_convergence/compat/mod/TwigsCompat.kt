@@ -16,12 +16,12 @@ object TwigsCompat : Compat {
         if (CompatVariables.VoidedVariance) {
 //            c.add(VVCracked(ID, "cracked_brick", TBlocks.CRACKED_BRICKS))
             c.add(VVCracked(ID, "cracked_cobblestone_brick", TBlocks.CRACKED_COBBLESTONE_BRICKS))
-            c.add(VVCracked(ID, "cracked_polished_tuff_bricks", TBlocks.CRACKED_POLISHED_TUFF_BRICKS))
-            c.add(VVCracked(ID, "cracked_polished_calcite_bricks", TBlocks.CRACKED_POLISHED_CALCITE_BRICKS))
-            c.add(VVCracked(ID, "cracked_polished_schist_bricks", TBlocks.CRACKED_POLISHED_SCHIST_BRICKS))
-            c.add(VVCracked(ID, "cracked_polished_rhyolite_bricks", TBlocks.CRACKED_POLISHED_RHYOLITE_BRICKS))
-            c.add(VVCracked(ID, "cracked_polished_bloodstone_bricks", TBlocks.CRACKED_POLISHED_BLOODSTONE_BRICKS))
-//            c.add(VVCracked(ID, "cracked_silt_bricks", TBlocks.CRACKED_SILT_BRICKS))
+            c.add(VVCracked(ID, "cracked_polished_tuff_brick", TBlocks.CRACKED_POLISHED_TUFF_BRICKS))
+            c.add(VVCracked(ID, "cracked_polished_calcite_brick", TBlocks.CRACKED_POLISHED_CALCITE_BRICKS))
+            c.add(VVCracked(ID, "cracked_polished_schist_brick", TBlocks.CRACKED_POLISHED_SCHIST_BRICKS))
+            c.add(VVCracked(ID, "cracked_polished_rhyolite_brick", TBlocks.CRACKED_POLISHED_RHYOLITE_BRICKS))
+            c.add(VVCracked(ID, "cracked_polished_bloodstone_brick", TBlocks.CRACKED_POLISHED_BLOODSTONE_BRICKS))
+//            c.add(VVCracked(ID, "cracked_silt_brick", TBlocks.CRACKED_SILT_BRICKS))
         }
     }
 }
