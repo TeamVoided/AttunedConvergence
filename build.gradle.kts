@@ -23,6 +23,8 @@ repositories {
     maven("https://teamvoided.org/releases")
     maven("https://maven.terraformersmc.com/") { name = "Terraformers" }
     maven("https://api.modrinth.com/maven")
+    maven("https://repo.greenhouse.house/releases/")
+    maven("https://jitpack.io/") // Fabric ASM
     mavenCentral()
 }
 
@@ -42,6 +44,7 @@ dependencies {
     // Compat
     modImplementation(fileTree("compat"))
     modImplementation(libs.voided.variance)
+    modImplementation(libs.farmers.delight)
 
     // Libs
     modImplementation(fileTree("libs"))
