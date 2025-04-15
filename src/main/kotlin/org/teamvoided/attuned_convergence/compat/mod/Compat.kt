@@ -12,6 +12,7 @@ interface Compat {
         - Twigs Table
         - Railings
         - Boards & there Stairs, Slabs, Walls
+        - Farmers Delight Cabinets
 
         // --- BIG COMPAT ---
         - Big Lantern

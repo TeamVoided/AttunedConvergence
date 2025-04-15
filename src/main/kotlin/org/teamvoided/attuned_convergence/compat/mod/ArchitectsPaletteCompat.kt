@@ -7,15 +7,8 @@ import architectspalette.core.registry.util.BlockNode.BlockType.BRICKS
 import architectspalette.core.registry.util.BlockNode.BlockType.CRACKED
 import architectspalette.core.registry.util.StoneBlockSet.SetComponent.SLAB
 import org.teamvoided.attuned_convergence.compat.CompatVariables
-import org.teamvoided.attuned_convergence.compat.module.Module
-import org.teamvoided.attuned_convergence.compat.module.TwigsMetalLamp
-import org.teamvoided.attuned_convergence.compat.module.TwigsTable
-import org.teamvoided.attuned_convergence.compat.module.VVCracked
-import org.teamvoided.attuned_convergence.compat.module.dnd.DnDBigLantern
-import org.teamvoided.attuned_convergence.compat.module.dnd.DnDChain
-import org.teamvoided.attuned_convergence.compat.module.dnd.DnDLeaves
-import org.teamvoided.attuned_convergence.compat.module.dnd.DnDLogs
-import org.teamvoided.attuned_convergence.compat.module.dnd.DnDWood
+import org.teamvoided.attuned_convergence.compat.module.*
+import org.teamvoided.attuned_convergence.compat.module.dnd.*
 import architectspalette.core.registry.APItems as I
 import org.teamvoided.attuned_convergence.compat.CompatVariables.ARCHITECTS_PALETTE as ID
 
@@ -44,6 +37,9 @@ object ArchitectsPaletteCompat : Compat {
                 )
             )
         }
+        if (CompatVariables.FarmersDelight) {
+            c.add(FDCabinets(ID, "twisted", TWISTED_PLANKS.getPart(SLAB), TWISTED_TRAPDOOR.get()))
+        }
         if (CompatVariables.VoidedVariance) {
             c.add(VVCracked(ID, "cracked_olivestone_brick", CRACKED_OLIVESTONE_BRICKS.get()))
             c.add(VVCracked(ID, "cracked_olivestonne_tile", CRACKED_OLIVESTONE_TILES.get()))
@@ -61,6 +57,7 @@ object ArchitectsPaletteCompat : Compat {
             c.add(VVCracked(ID, "cracked_moonshale_brick", MOONSHALE.getBricks()!!.getCracked()))
         }
     }
+
     fun BlockNode.getCracked() = this.getChild(CRACKED).get()
     fun BlockNode.getBricks() = this.children.find { it.type == BRICKS }
 }
